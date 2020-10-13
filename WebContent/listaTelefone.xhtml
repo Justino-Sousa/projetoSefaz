@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<h:outputStylesheet name="primeicons/primeicons.css"
+		library="primefaces" />
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Telefones do usuário</title>
+</h:head>
+
+<h:body>
+	<p:panel id="listadeTelefone" header="Lista de Usuarios"
+		style="width:980px;height:600px">
+
+		<p:dataTable value="#{usuarioController.telefones}" var="telefone" >
+
+		<p:column>
+				<f:facet name="header">Nome</f:facet>
+            #{telefone.ddd}
+        </p:column>
+			<p:column>
+				<f:facet name="header">Email</f:facet>
+            #{telefone.numero}
+        </p:column>
+        	<p:column>
+				<f:facet name="header">Tipo</f:facet>
+            #{telefone.tipo}
+        </p:column>
+
+	
+			<p:column>
+				<h:link value="editar" outcome="editarTelefone">
+
+					<f:param name="usuario" value="#{usuario.id}" />
+				</h:link>
+			</p:column>
+			<p:column>
+				<h:link value="Remover" outcome="removerTelefone">
+					<f:param name="usuario" value="#{telefone.id}" />
+				</h:link>
+			</p:column>
+		</p:dataTable>
+	</p:panel>
+		<p:linkButton outcome="adicionar" value="cadastrar"
+			icon="pi pi-user-plus" style="margin-right:20px;"></p:linkButton>
+		<p:linkButton outcome="home" value="voltar"  style="margin-right:20px;"></p:linkButton>
+	
+</h:body>
+
+</html>
